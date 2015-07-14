@@ -35,17 +35,17 @@ module Rails
       end
 
       def create_views_files        
-        template "_description.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "_description.html.haml")
-        template "_index_show.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "_index_show.html.haml")
-        template "_listing.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "_listing.html.haml")
-        template "show.js.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "show.js.haml")
-        template "script.coffee", File.join("app/assets/javascripts/keppler_contact_us",  "#{controller_file_name}.coffee")
-        template "style.scss", File.join("app/assets/stylesheets/keppler_contact_us",  "#{controller_file_name}.scss")
-        template "index.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "index.html.haml")
-        template "edit.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "edit.html.haml")
-        template "new.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "new.html.haml")
-        template "show.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "show.html.haml")
-        template "_form.html.haml", File.join("app/views/keppler_contact_us/#{controller_file_name}",  "_form.html.haml")
+        template "_description.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "_description.html.haml")
+        template "_index_show.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "_index_show.html.haml")
+        template "_listing.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "_listing.html.haml")
+        template "show.js.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "show.js.haml")
+        template "script.coffee", File.join("app/assets/javascripts/keppler_blog",  "#{controller_file_name}.coffee")
+        template "style.scss", File.join("app/assets/stylesheets/keppler_blog",  "#{controller_file_name}.scss")
+        template "index.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "index.html.haml")
+        template "edit.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "edit.html.haml")
+        template "new.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "new.html.haml")
+        template "show.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "show.html.haml")
+        template "_form.html.haml", File.join("app/views/keppler_blog/#{controller_file_name}",  "_form.html.haml")
       end
 
       def create_assets_files
