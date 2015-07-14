@@ -1,7 +1,7 @@
 %li
 	- if can? :index, KepplerBlog::Post
 		.collapsable.collapsible-header{ class: "#{'active current' if controller_path.camelize.deconstantize.eql?('KepplerBlog') }" }
-			= material_icon.md_18.dashboard
+			= material_icon.md_18.library_books
 			Blog
 		.collapsible-body
 			%ul.pageslide-sub-menu

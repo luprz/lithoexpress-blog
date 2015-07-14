@@ -1,5 +1,5 @@
 %tr{ id: "row-#{category.id}" }
-	- if can? :destroy_multiple, Category
+	- if can? :destroy_multiple, model
 		%td.item-check{style:"width: 10%"}
 			= link_to "", category_path(category), remote: true, class: "show-row"
 			%input{ type:"checkbox", class: "filled-in", id: "checkbox-#{category.id}", 'checklist-model'=>"check", 'checklist-value'=>"#{category.id}", "ng-click"=>"selectByCheck(#{@objects.size})"}

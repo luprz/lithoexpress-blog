@@ -21,15 +21,18 @@ module KepplerBlog
 
     # GET /posts/new
     def new
+      @categories = Category.order(:name)
       @post = Post.new
     end
 
     # GET /posts/1/edit
     def edit
+      @categories = Category.order(:name)
     end
 
     # POST /posts
     def create
+      @categories = Category.order(:name)
       @post = Post.new(post_params)
 
       if @post.save

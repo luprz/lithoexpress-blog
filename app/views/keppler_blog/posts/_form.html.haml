@@ -7,15 +7,14 @@
 			.card
 				= simple_form_for @post do |f|
 					.row
-						= f.input :title
+						= f.input :image, :as => :file_material, label: false, wrapper_html: { class: "file-field" }
+						= f.input :title, label: "Título"
 						= f.input :body, input_html: {class: "materialize-textarea"}
-						= f.input :user_id
-						= f.input :category_id
+						= f.input :category_id, collection: @categories, label: false, include_blank: "Selecione una categoría"
 						= f.input :subcategory_id
-						= f.input :image
-						= f.input :public, as: :checkbox_material
-						= f.input :comments_open, as: :checkbox_material
-						= f.input :shared_enabled, as: :checkbox_material
+						= f.input :public, as: :checkbox_material, label: 'Publicar'
+						= f.input :comments_open, as: :checkbox_material, label: 'Comentarios'
+						= f.input :shared_enabled, as: :checkbox_material, label: 'Compartir en redes'
 					
 					.form-actions.right
 						= f.button :submit, "Guardar", class: "btn"
