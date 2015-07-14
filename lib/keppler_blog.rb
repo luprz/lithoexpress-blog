@@ -1,7 +1,7 @@
 require "keppler_blog/engine"
 
 module KepplerBlog
-	ROUTES_TREE_SIDEBAR = { icon: "local_library", title: "blog", routes: { 'keppler_blog/posts' => "posts", 'keppler_blog/categories' => "categories" }}
+	ROUTE_SIDEBAR = true
 
 	# true/false si desea que se autentiquen los usuarios para poder usar el modulo en el frontend
   mattr_accessor :widget_twitter_id
