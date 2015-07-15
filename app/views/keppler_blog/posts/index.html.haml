@@ -1,7 +1,8 @@
 = title("Posts - Listado")
 .listing.col.l9.m12.s12
-	= link_to new_post_path, class: "btn-floating btn-large waves-effect waves-light teal btn-new hide-on-small-only", "data-no-turbolink" => true do
-		= material_icon.md_24.add
+	- if can? :new, model
+		= link_to new_post_path, class: "btn-floating btn-large waves-effect waves-light teal btn-new hide-on-small-only", "data-no-turbolink" => true do
+			= material_icon.md_24.add
 	= entries(@total, @objects)
 	%table.bordered
 		%tbody
