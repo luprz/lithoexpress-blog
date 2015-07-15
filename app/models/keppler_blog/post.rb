@@ -22,23 +22,21 @@ module KepplerBlog
     end
 
     def self.query(query)
-      { query: { multi_match:  { query: query, fields: [] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
+      { query: { multi_match:  { query: query, fields: [:id, :title, :body, :category, :subcategory, :public, :comments, :shared] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
     end
 
     #armar indexado de elasticserch
     def as_indexed_json(options={})
       {
         id: self.id.to_s,
-        title:  self.title.to_s,
-        body:  self.body.to_s,
-        user_id:  self.user_id.to_s,
-        category_id:  self.category_id.to_s,
-        subcategory_id:  self.subcategory_id.to_s,
-        image:  self.image.to_s,
-        public:  self.public.to_s,
-        comments_open:  self.comments_open.to_s,
-        shared_enabled:  self.shared_enabled.to_s,
-        permalink:  self.permalink.to_s,
+        title:  self.title,
+        body:  ActionView::Base.full_sanitizer.sanitize(self.body, tags: []),
+        user_id:  self.user.name,
+        category:  self.category.name,
+        subcategory:  self.subcategory ? self.subcategory.name : "--subcategoria",
+        public:  self.public ? "Publicado" : "--publicado",
+        comments:  self.comments_open ? "Comentarios" : "--comentarios",
+        shared:  self.shared_enabled ? "Compartiendo redes" : "--compartiendo redes",
       }.as_json
     end
 

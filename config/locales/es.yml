@@ -12,3 +12,20 @@ es:
         created_at: Fecha de creación
         updated_at: Última actualiazación
         subcategories: Subcategorías
+      actions:
+        delete: "¿Estas seguro de querer eliminar? Cuandos se elimina una categoría se eliminan todos los posts asiciados a ella."
+    post:
+      attributes:
+        id: "Identificador"
+        title: "Título"
+        body: "Contenido"
+        user_id: "Autor"
+        category_id: "Categoría"
+        subcategory_id: "Subcategoría"
+        public: "Publicar"
+        comments_open: "Comentarios"
+        shared_enabled: "Compartir en redes"
+        created_at: "Fecha de cración"
+        updated_at: "Última actualiazación"
+      actions:
+        delete: "¿Estas seguro de querer eliminar?"

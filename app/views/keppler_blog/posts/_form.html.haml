@@ -18,3 +18,12 @@
 					
 					.form-actions.right
 						= f.button :submit, "Guardar", class: "btn"
+
+- unless @post.subcategory_id
+	:javascript
+		$('#post_subcategory_id').prop('disabled', true)
+		$('#post_subcategory_id').hide()
+
+- if @post.image.file
+	:javascript
+		$('.file-path').val("#{@post.image.file.filename}")

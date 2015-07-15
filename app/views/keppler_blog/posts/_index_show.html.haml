@@ -4,9 +4,10 @@
 			= link_to edit_post_path(@post), class: "btn-floating waves-effect waves-light btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => "Editar", "data-no-turbolink" => true do
 				= material_icon.md_24.create
 	%h5
-		= material_icon.md_24.account_circle.css_class("md-light") 
+		= material_icon.md_24.library_books.css_class("md-light") 
 		= t("model.singular.#{controller_name.singularize}")
-.listing-show-body.card
+.listing-show-body.card#blog-listing--show-body
+	= image_tag @post.image
 	%ul.list
 		%li.list-row
 			.display-label= t("model.#{controller_name.singularize}.attributes.id")
@@ -15,34 +16,36 @@
 			.display-label= t("model.#{controller_name.singularize}.attributes.title")
 			.display-value= @post.title
 		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.body")
-			.display-value= sanitize(@post.body, tags: [])
-		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.user_id")
-			.display-value= @post.user_id
-		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.category_id")
-			.display-value= @post.category_id
-		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.subcategory_id")
-			.display-value= @post.subcategory_id
-		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.image")
-			.display-value= @post.image
-		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.public")
-			.display-value= @post.public
-		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.comments_open")
-			.display-value= @post.comments_open
-		%li.list-row
-			.display-label= t("model.#{controller_name.singularize}.attributes.shared_enabled")
-			.display-value= @post.shared_enabled
-		%li.list-row
 			.display-label= t("model.#{controller_name.singularize}.attributes.permalink")
 			.display-value= @post.permalink
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.body")
+			.display-value= sanitize(@post.body, tags: []).truncate(300)
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.user_id")
+			.display-value= @post.user.name
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.category_id")
+			.display-value= @post.category.name
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.subcategory_id")
+			.display-value= @post.subcategory ? @post.subcategory.name : "Sin subcategoría"
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.public")
+			.display-value= @post.public ? "Si" : "No"
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.comments_open")
+			.display-value= @post.comments_open ? "Si" : "No"
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.shared_enabled")
+			.display-value= @post.shared_enabled ? "Si" : "No"
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.created_at")
+			.display-value= @post.created_at.strftime("%d/%m/%Y %H:%M:%S")
+		%li.list-row
+			.display-label= t("model.#{controller_name.singularize}.attributes.updated_at")
+			.display-value= @post.updated_at.strftime("%d/%m/%Y %H:%M:%S")
 	
 
 :javascript
-	$(".modal-trigger").leanModal();
 	$('.tooltipped').tooltip({delay: 1});

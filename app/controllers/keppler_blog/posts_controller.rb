@@ -7,6 +7,7 @@ module KepplerBlog
     layout 'admin/application'
     load_and_authorize_resource
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_categories, only: [:new, :edit, :update, :create]
 
     # GET /posts
     def index
@@ -21,19 +22,16 @@ module KepplerBlog
 
     # GET /posts/new
     def new
-      @categories = Category.order(:name)
       @post = Post.new
     end
 
     # GET /posts/1/edit
     def edit
-      @categories = Category.order(:name)
     end
 
     # POST /posts
     def create
-      @categories = Category.order(:name)
-      @post = Post.new(post_params)
+      @post = Post.new(post_params.merge(user_id: current_user.id))
 
       if @post.save
         redirect_to @post, notice: 'Post was successfully created.'
@@ -78,6 +76,10 @@ module KepplerBlog
       # Use callbacks to share common setup or constraints between actions.
       def set_post
         @post = Post.find(params[:id])
+      end
+
+      def set_categories
+        @categories = Category.order(:name)
       end
 
       # Only allow a trusted parameter "white list" through.

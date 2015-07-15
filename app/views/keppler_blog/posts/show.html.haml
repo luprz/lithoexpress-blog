@@ -13,35 +13,38 @@
 		.card			
 			%ul.list
 				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.id")
-					.display-value.fs-body-1.tc-black-2= @post.id.to_s.humanize
+					.display-value.fs-body-1.tc-black-2{style: "text-align: center;"}= image_tag @post.image, style: "width: 50%;"
 				%li.list-row
 					.display-label= t("model.#{controller_name.singularize}.attributes.title")
 					.display-value.fs-body-1.tc-black-2= @post.title.to_s.humanize
 				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.body")
-					.display-value.fs-body-1.tc-black-2= @post.body.to_s.humanize
-				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.user_id")
-					.display-value.fs-body-1.tc-black-2= @post.user_id.to_s.humanize
-				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.category_id")
-					.display-value.fs-body-1.tc-black-2= @post.category_id.to_s.humanize
-				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.subcategory_id")
-					.display-value.fs-body-1.tc-black-2= @post.subcategory_id.to_s.humanize
-				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.image")
-					.display-value.fs-body-1.tc-black-2= @post.image.to_s.humanize
-				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.public")
-					.display-value.fs-body-1.tc-black-2= @post.public.to_s.humanize
-				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.comments_open")
-					.display-value.fs-body-1.tc-black-2= @post.comments_open.to_s.humanize
-				%li.list-row
-					.display-label= t("model.#{controller_name.singularize}.attributes.shared_enabled")
-					.display-value.fs-body-1.tc-black-2= @post.shared_enabled.to_s.humanize
-				%li.list-row
 					.display-label= t("model.#{controller_name.singularize}.attributes.permalink")
 					.display-value.fs-body-1.tc-black-2= @post.permalink.to_s.humanize
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.body")
+					.display-value.fs-body-1.tc-black-2=  sanitize(@post.body, tags: [])
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.user_id")
+					.display-value.fs-body-1.tc-black-2= @post.user.name
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.category_id")
+					.display-value.fs-body-1.tc-black-2= @post.category.name
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.subcategory_id")
+					.display-value.fs-body-1.tc-black-2= @post.subcategory ? @post.subcategory.name : "Sin subcategoría"
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.public")
+					.display-value.fs-body-1.tc-black-2= @post.public ? "Si" : "No"
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.comments_open")
+					.display-value.fs-body-1.tc-black-2= @post.comments_open ? "Si" : "No"
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.shared_enabled")
+					.display-value.fs-body-1.tc-black-2= @post.shared_enabled ? "Si" : "No"
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.created_at")
+					.display-value= @post.created_at.strftime("%d/%m/%Y %H:%M:%S")
+				%li.list-row
+					.display-label= t("model.#{controller_name.singularize}.attributes.updated_at")
+					.display-value= @post.updated_at.strftime("%d/%m/%Y %H:%M:%S")
+				
