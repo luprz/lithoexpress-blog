@@ -4,6 +4,14 @@ module KepplerBlog
   class Post < ActiveRecord::Base
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
+    before_save :create_permalink
+    mount_uploader :image, ImageUploader
+    belongs_to :user
+    belongs_to :category
+    belongs_to :subcategory
+
+    validates_presence_of :title, :body, :category
+    validates_uniqueness_of :title
 
     def self.searching(query)
       if query
@@ -32,6 +40,12 @@ module KepplerBlog
         shared_enabled:  self.shared_enabled.to_s,
         permalink:  self.permalink.to_s,
       }.as_json
+    end
+
+    private
+
+    def create_permalink
+      self.permalink = self.title.downcase.parameterize
     end
 
   end

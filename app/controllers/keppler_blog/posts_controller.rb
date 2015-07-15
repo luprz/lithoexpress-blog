@@ -44,12 +44,24 @@ module KepplerBlog
 
     # PATCH/PUT /posts/1
     def update
+      @post.subcategory_id = nil if post_params[:subcategory_id].nil?
+      
       if @post.update(post_params)
         redirect_to @post, notice: 'Post was successfully updated.'
       else
         render :edit
       end
     end
+
+
+    def subcategories_of_cagegory
+      @category = Category.find(params[:category_id])
+      @subcategories = @category.subcategories
+      respond_to do |format|
+         format.js {  }
+      end
+    end
+
 
     # DELETE /posts/1
     def destroy

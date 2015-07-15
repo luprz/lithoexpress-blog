@@ -1,0 +1,14 @@
+es:
+  model:
+    plural:
+      categories: Categorías
+    singular:
+      category: Categoría
+    category:
+      attributes:
+        id: Identificador
+        name: Nombre
+        permalink: Permalink
+        created_at: Fecha de creación
+        updated_at: Última actualiazación
+        subcategories: Subcategorías

@@ -67,7 +67,7 @@ module KepplerBlog
 
       # Only allow a trusted parameter "white list" through.
       def category_params
-        params.require(:category).permit(:name, :permalink)
+        params.require(:category).permit(:name, subcategories_attributes: [:id, :name, :_destroy])
       end
   end
 end

@@ -1,4 +1,4 @@
-.listing-show-header
+.listing-show-header#header-category
 	.actions
 		- if can? :update, model
 			= link_to edit_category_path(@category), class: "btn-floating waves-effect waves-light btn-flat tooltipped", "data-position" => "bottom", "data-tooltip" => "Editar" do
@@ -6,7 +6,7 @@
 	%h5
 		= material_icon.md_24.account_circle.css_class("md-light") 
 		= t("model.singular.#{controller_name.singularize}")
-.listing-show-body.card
+.listing-show-body.card#body-category
 	%ul.list
 		%li.list-row
 			.display-label= t("model.#{controller_name.singularize}.attributes.id")
@@ -17,8 +17,13 @@
 		%li.list-row
 			.display-label= t("model.#{controller_name.singularize}.attributes.permalink")
 			.display-value= @category.permalink
+		- unless @category.subcategories.empty?
+			%li.list-row
+				.display-label= t("model.#{controller_name.singularize}.attributes.subcategories")
+				.display-value.subcategory
+					- @category.subcategories.each do |subcategory|
+						%span.subcategory= subcategory.name
 	
 
 :javascript
-	$(".modal-trigger").leanModal();
 	$('.tooltipped').tooltip({delay: 1});

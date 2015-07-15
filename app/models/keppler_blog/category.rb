@@ -4,6 +4,10 @@ module KepplerBlog
   class Category < ActiveRecord::Base
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
+    before_save :create_permalink
+    has_many :posts, dependent: :destroy
+    has_many :subcategories
+    accepts_nested_attributes_for :subcategories, :reject_if => :all_blank, :allow_destroy => true
 
     def self.searching(query)
       if query
@@ -24,6 +28,12 @@ module KepplerBlog
         name:  self.name.to_s,
         permalink:  self.permalink.to_s,
       }.as_json
+    end
+
+    private
+
+    def create_permalink
+      self.permalink = self.name.downcase.parameterize
     end
 
   end
