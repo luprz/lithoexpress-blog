@@ -1,0 +1,32 @@
+.container.blog#keppler-blog
+	= render 'categories'
+	.row
+		.col-lg-8
+			.posts-wrapper
+				- @posts.each do |post|
+					.post
+						%h2.post-title
+							= link_to post.title, blog_show_post_path(post.permalink)
+						.post-attributes
+							%ul
+								%li
+									%span
+										%i.fa.fa-calendar
+										= post.created_at.strftime("%d %b. %Y")
+								%li
+									%i.fa.fa-user
+									= link_to post.user.name, "#"
+								%li
+									%i.fa.fa-tags
+									= link_to post.category.name, "#"
+						.post-image
+							= link_to blog_show_post_path(post.permalink) do
+								= image_tag post.image
+						.post-body
+							= sanitize(post.body, tags: []).truncate(300)
+							.read-more
+								= link_to "Leer más", blog_show_post_path(post.permalink), class: "btn btn-xs"
+				%hr.hr-half
+
+		.col-lg-4
+			= render 'recents'

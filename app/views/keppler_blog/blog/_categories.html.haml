@@ -1,0 +1,14 @@
+%nav.navbar#navbar-categories
+	.container-fluid
+		.collapse.navbar-collapse
+			%ul.nav.navbar-nav
+				- @categories.each do |category|
+					%li.dropdown
+						= link_to "", class: "dropdown-toggle" ,"aria-expanded" => false, "aria-haspopup" => true, "data-toggle" => "dropdown disabled", :role => "button" do
+							= category.name.titleize
+							%span.caret
+						- unless category.subcategories.empty?
+							%ul.dropdown-menu
+								- category.subcategories.each do |subcategory|
+									%li
+										= link_to subcategory.name, "#"
