@@ -16,8 +16,9 @@ KepplerBlog::Engine.routes.draw do
   end
 
   scope :blog do
-    get '(page/:page)', to: 'blog#index', as: :index
-    get ":type/:filter", to: 'blog#filter', as: :search
+    get '(page/:page)', to: 'blog#index', as: :blog_listing
+    get ":type/:permalink", to: 'blog#filter', as: :filter
+    get "category/:category/subcategory/:subcategory", to: 'blog#filter_subcategory', as: :filter_subcategory
     get '/:permalink', to: 'blog#show', as: :blog_show_post
   end
 

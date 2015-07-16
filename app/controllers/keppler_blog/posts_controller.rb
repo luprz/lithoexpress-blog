@@ -5,7 +5,7 @@ module KepplerBlog
   class PostsController < ApplicationController  
     before_filter :authenticate_user!
     layout 'admin/application'
-    load_and_authorize_resource
+    load_and_authorize_resource except: [:subcategories_of_cagegory]
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :set_categories, only: [:new, :edit, :update, :create]
 

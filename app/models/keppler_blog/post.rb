@@ -13,6 +13,18 @@ module KepplerBlog
     validates_presence_of :title, :body, :category
     validates_uniqueness_of :title
 
+    def self.filter_by_autor(autor)
+       where(public: true, user: User.find_by_permalink(autor).id)
+    end
+
+    def self.filter_by_category(category)
+      where(public: true, category: Category.find_by_permalink(category).id)
+    end
+
+    def self.filter_by_subcategory(category, subcategory)
+      Category.find_by_permalink(category).subcategories.find_by_permalink(subcategory).posts
+    end
+
     def self.searching(query)
       if query
         self.search(self.query query).records.order(id: :desc)
