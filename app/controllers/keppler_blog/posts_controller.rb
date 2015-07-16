@@ -84,7 +84,7 @@ module KepplerBlog
 
       # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:title, :body, :user_id, :category_id, :subcategory_id, :image, :public, :comments_open, :shared_enabled, :permalink)
+        params.require(:post).permit(:title, :body, :user_id, :category_id, :subcategory_id, :image, :public, :comments_open, :shared_enabled, :permalink, :tag_list)
       end
   end
 end

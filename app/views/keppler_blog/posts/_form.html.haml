@@ -12,6 +12,7 @@
 						= f.input :body, :as => :ckeditor, label: false
 						= f.input :category_id, collection: @categories, label: false, include_blank: "Selecione una categoría", input_html: { class: "browser-default" }
 						= f.input :subcategory_id, collection: f.object.created_at? ? f.object.category.subcategories : [], label: false, include_blank: "Selecione una subcategoría", input_html: { class: "browser-default" }
+						= f.input :tag_list, label: false, input_html: { data:{role:'tagsinput'}, value:  f.object.tag_list.reverse.join(", "), placeholder: "Agregar tags" }
 						= f.input :public, as: :checkbox_material, label: 'Publicar'
 						= f.input :comments_open, as: :checkbox_material, label: 'Comentarios'
 						= f.input :shared_enabled, as: :checkbox_material, label: 'Compartir en redes'

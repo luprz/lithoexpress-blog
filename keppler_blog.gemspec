@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
   s.add_dependency "mini_magick"
   s.add_dependency "cancancan"
   s.add_dependency "cocoon"
+  s.add_dependency "acts-as-taggable-on", "~> 3.4"
+  s.add_dependency "bootstrap-tagsinput-rails"
 
   s.add_development_dependency "sqlite3"
 end

@@ -9,7 +9,9 @@ module KepplerBlog
     belongs_to :user
     belongs_to :category
     belongs_to :subcategory
-
+    acts_as_taggable
+    acts_as_taggable_on :tags
+    
     validates_presence_of :title, :body, :category
     validates_uniqueness_of :title
 
