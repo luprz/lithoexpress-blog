@@ -11,7 +11,7 @@ module KepplerBlog
 
     # GET /posts
     def index
-      posts = current_user.has_role?(:editor) ? Post.searching(@query).where(user_id: current_user.id) : Post.searching(@query).all
+      posts = current_user.has_role?(:autor) ? Post.searching(@query).where(user_id: current_user.id) : Post.searching(@query).all
       @objects, @total = posts.page(@current_page), posts.size
       redirect_to posts_path(page: @current_page.to_i.pred, search: @query) if !@objects.first_page? and @objects.size.zero?
     end
