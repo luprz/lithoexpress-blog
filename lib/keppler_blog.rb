@@ -3,7 +3,7 @@ require "keppler_blog/engine"
 module KepplerBlog
 	ROUTE_SIDEBAR = true
 
-  mattr_accessor :widget_twitter_id
+  mattr_accessor :widget_twitter_id, :twitter_username
 
   def self.setup
     yield self

@@ -15,7 +15,7 @@ window.SocialShareButton =
     title = encodeURIComponent($(el).data(site + '-title') || $parent.data('title') || '')
     img = encodeURIComponent($parent.data("img") || '')
     url = encodeURIComponent($parent.data("url") || '')
-    via = encodeURIComponent($parent.data("via") || '')
+    via = encodeURIComponent($parent.data("via") || '<%= KepplerBlog.twitter_username %>')
     desc = encodeURIComponent($parent.data("desc") || ' ')
     popup = encodeURIComponent($parent.data("popup") || 'true')
 
