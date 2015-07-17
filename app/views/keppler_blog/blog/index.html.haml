@@ -3,30 +3,36 @@
 	.row
 		.col-lg-8
 			.posts-wrapper
-				- @posts.each do |post|
-					.post
-						%h2.post-title
-							= link_to post.title, blog_show_post_path(post.permalink)
-						.post-attributes
-							%ul
-								%li
-									%span
-										%i.fa.fa-calendar
-										= post.created_at.strftime("%d %b. %Y")
-								%li
-									%i.fa.fa-user
-									= link_to post.user.name, filter_path('autor', post.user.permalink)
-								%li
-									%i.fa.fa-tags
-									= link_to post.category.name, filter_path('category', post.category.permalink)
-						.post-image
-							= link_to blog_show_post_path(post.permalink) do
-								= image_tag post.image
-						.post-body
-							= sanitize(post.body, tags: []).truncate(300)
-							.read-more
-								= link_to "Leer más", blog_show_post_path(post.permalink), class: "btn btn-xs"
+				- unless @posts.empty?
+					- @posts.each do |post|
+						.post
+							%h2.post-title
+								= link_to post.title, blog_show_post_path(post.permalink)
+							.post-attributes
+								%ul
+									%li
+										%span
+											%i.fa.fa-calendar
+											= post.created_at.strftime("%d %b. %Y")
+									%li
+										%i.fa.fa-user
+										= link_to post.user.name, filter_path('autor', post.user.permalink)
+									%li
+										%i.fa.fa-tags
+										= link_to post.category.name, filter_path('category', post.category.permalink)
+							.post-image
+								= link_to blog_show_post_path(post.permalink) do
+									= image_tag post.image
+							.post-body
+								= sanitize(post.body, tags: []).truncate(300)
+								.read-more
+									= link_to "Leer más", blog_show_post_path(post.permalink), class: "btn btn-xs"
+				- else
+					%center
+						No se encontraron resultados.
 				%hr.hr-half
 				= paginate @posts, :views_prefix => 'templates'
 		.col-lg-4
 			= render 'recents'
+			= render 'tags'
+			= render 'twitter_timeline'

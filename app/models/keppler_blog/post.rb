@@ -16,15 +16,19 @@ module KepplerBlog
     validates_uniqueness_of :title
 
     def self.filter_by_autor(autor)
-       where(public: true, user: User.find_by_permalink(autor).id)
+      where(public: true, user: User.find_by_permalink(autor).id).order(created_at: :desc)
     end
 
     def self.filter_by_category(category)
-      where(public: true, category: Category.find_by_permalink(category).id)
+      where(public: true, category: Category.find_by_permalink(category).id).order(created_at: :desc)
+    end
+
+    def self.filter_by_tag(tag)
+      where(public: true).tagged_with(tag.gsub("-", " ")).order(created_at: :desc)
     end
 
     def self.filter_by_subcategory(category, subcategory)
-      Category.find_by_permalink(category).subcategories.find_by_permalink(subcategory).posts
+      Category.find_by_permalink(category).subcategories.find_by_permalink(subcategory).posts.order(created_at: :desc)
     end
 
     def self.searching(query)

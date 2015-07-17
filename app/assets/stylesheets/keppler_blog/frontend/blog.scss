@@ -2,6 +2,11 @@
 
 @import "navbar_categories";
 
+@mixin icon-before($icon){
+  content: $icon;
+  font-family: FontAwesome;
+}
+
 .blog{
 	margin-top: 100px;
 	.posts-wrapper{
@@ -45,9 +50,8 @@
 				color: #676f7a;
 				line-height: 22px;
 				text-align: left;
-				margin: 20px 0px 20px 0px;
+				margin: 5px 0px 20px 0px;
 				p{
-					margin: 20px 0px 20px 0px;
 					color: #676f7a;
 					text-align: left;
 					line-height: 22px;
@@ -73,7 +77,7 @@
 	}
 
 	.blog-widget{
-		margin-bottom: 20px;
+		margin-bottom: 50px;
 		&--header{
 			margin-bottom: 10px;
 			.widget-title{
@@ -92,7 +96,7 @@
 				}
 			}
 			
-			//widget
+			//widget recents
 			#recents{
 				li{
 					margin-top: 10px;
@@ -101,11 +105,95 @@
 					}
 				}
 			}
+
+			//widget tags
+			#tags{
+				li{
+					margin-bottom: 10px;
+					display: inline-block;
+					a{
+						border-radius: 2px;
+						font-size: 12px;
+						background: #333;
+						color: white;
+						padding: 4px 10px;
+						text-transform: uppercase;
+					}
+					a:hover{
+						text-decoration: none;
+						background: #ee6e73;
+						-webkit-transition: background .5s;
+        		transition: background .5s;
+					}
+					a.active{
+						background: #ee6e73;
+					}
+				}
+			}
 		}
+	}
+	
+	.social-share-button{
+		margin-top: 5px;
 	}
 
 	.pagination{
 		width: 100%;
 		text-align: center;
+	}
+}
+
+.social-share-button{
+	a{
+		text-decoration: none;
+		color: #333;
+		font-size: 30px;
+		margin-left: 3px;
+	}
+
+	a:hover{
+		color: #ee6e73;
+		-webkit-transition: color .5s;
+        		transition: color .5s;
+	}
+
+	&-twitter:before{
+		@include icon-before("\f081");
+	}
+
+	&-facebook:before{
+		@include icon-before("\f082")
+	}
+	
+	&-google_plus:before{
+		@include icon-before("\f0d4")
+	}
+
+	&-pinterest:before{
+		@include icon-before("\f0d3")
+	}
+
+	&-tumblr:before{
+		@include icon-before("\f174")
+	}
+
+	&-email:before{
+		@include icon-before("\f199")
+	}
+
+}
+
+@media only screen and (-webkit-device-pixel-ratio: 2) {
+  a{
+		text-decoration: none;
+		color: #333;
+		font-size: 20px;
+		margin-left: 3px;
+	}
+
+	a:hover{
+		color: #ee6e73;
+		-webkit-transition: color .5s;
+        		transition: color .5s;
 	}
 }
