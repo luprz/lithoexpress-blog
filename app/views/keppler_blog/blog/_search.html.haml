@@ -1,0 +1,8 @@
+.blog-widget
+	.blog-widget--header
+		%h3.widget-title
+			Búsqueda
+	.blog-widget--body
+		.widget-list#search
+			= form_tag blog_listing_path, method: :get, :html => {:class => ""} do |f|
+				= text_field_tag :query, params[:query], :placeholder => "Buscar.."

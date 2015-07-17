@@ -27,12 +27,14 @@
 								= sanitize(post.body, tags: []).truncate(300)
 								.read-more
 									= link_to "Leer más", blog_show_post_path(post.permalink), class: "btn btn-xs"
+						%hr.hr-half
 				- else
 					%center
 						No se encontraron resultados.
-				%hr.hr-half
+					%hr.hr-half
 				= paginate @posts, :views_prefix => 'templates'
 		.col-lg-4
+			= render 'search'
 			= render 'recents'
 			= render 'tags'
 			= render 'twitter_timeline'

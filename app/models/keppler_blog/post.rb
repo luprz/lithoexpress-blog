@@ -15,6 +15,12 @@ module KepplerBlog
     validates_presence_of :title, :body, :category
     validates_uniqueness_of :title
 
+    #actualizar document de elasticsearch (ojo: no sabemos si es la mejor solucion.)
+    #se deberia usar __elasticsearch__.update_document pero aparantemente no funciona.
+    after_commit on: [:update] do
+      puts __elasticsearch__.index_document
+    end
+
     def self.filter_by_autor(autor)
       where(public: true, user: User.find_by_permalink(autor).id).order(created_at: :desc)
     end
@@ -31,6 +37,7 @@ module KepplerBlog
       Category.find_by_permalink(category).subcategories.find_by_permalink(subcategory).posts.order(created_at: :desc)
     end
 
+    #search para el admin
     def self.searching(query)
       if query
         self.search(self.query query).records.order(id: :desc)
@@ -40,21 +47,22 @@ module KepplerBlog
     end
 
     def self.query(query)
-      { query: { multi_match:  { query: query, fields: [:id, :title, :body, :category, :subcategory, :public, :comments, :shared] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
+      { query: { multi_match:  { query: query, fields: [:id, :title, :body, :category, :autor, :subcategory, :public, :comments, :shared, :tags] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
     end
 
     #armar indexado de elasticserch
     def as_indexed_json(options={})
       {
         id: self.id.to_s,
-        title:  self.title,
-        body:  ActionView::Base.full_sanitizer.sanitize(self.body, tags: []),
-        user_id:  self.user.name,
-        category:  self.category.name,
-        subcategory:  self.subcategory ? self.subcategory.name : "--subcategoria",
-        public:  self.public ? "Publicado" : "--publicado",
-        comments:  self.comments_open ? "Comentarios" : "--comentarios",
-        shared:  self.shared_enabled ? "Compartiendo redes" : "--compartiendo redes",
+        title: self.title,
+        body: ActionView::Base.full_sanitizer.sanitize(self.body, tags: []),
+        autor: self.user.name,
+        category: self.category.name,
+        subcategory: self.subcategory ? self.subcategory.name : "--subcategoria",
+        public: self.public ? "si--publicado" : "no--publicado",
+        comments: self.comments_open ? "si--comentarios" : "no--comentarios",
+        shared: self.shared_enabled ? "si--compartiendo" : "no--compartiendo",
+        tags: self.tag_list.to_s
       }.as_json
     end
 

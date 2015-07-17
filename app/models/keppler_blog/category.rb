@@ -9,6 +9,12 @@ module KepplerBlog
     has_many :subcategories
     accepts_nested_attributes_for :subcategories, :reject_if => :all_blank, :allow_destroy => true
 
+    #actualizar document de elasticsearch (ojo: no sabemos si es la mejor solucion.)
+    #se deberia usar __elasticsearch__.update_document pero aparantemente no funciona.
+    after_commit on: [:update] do
+      puts __elasticsearch__.index_document
+    end
+
     def self.searching(query)
       if query
         self.search(self.query query).records.order(id: :desc)

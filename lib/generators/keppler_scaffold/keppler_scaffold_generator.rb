@@ -15,7 +15,7 @@ module Rails
       #  @options = @options.merge(stylesheets: false) unless options[:assets]
       #  @options = @options.merge(stylesheet_engine: false) unless options[:stylesheets]
       #end
-      @name_engine = "keppler_contact_us"
+      @name_engine = "keppler_blog"
 
       source_root File.expand_path('../templates', __FILE__)
 
