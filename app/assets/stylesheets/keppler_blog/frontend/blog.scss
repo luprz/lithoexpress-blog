@@ -150,6 +150,23 @@
 	.pagination{
 		width: 100%;
 		text-align: center;
+
+		.btn-current{
+			background: #ee6e73;
+			color: white;
+			font-weight: bold;
+		}
+
+		.page, .next, .last, .prev, .first{			
+			.btn-page, .btn-page:hover{
+				color: rgba(0, 0, 0, 0.54) !important;
+				background: #eeeeee;
+				font-weight: bold;
+				i{
+					font-weight: bold;
+				}
+			}
+		}
 	}
 }
 

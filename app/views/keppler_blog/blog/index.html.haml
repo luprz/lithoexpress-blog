@@ -32,9 +32,6 @@
 					%center
 						No se encontraron resultados.
 					%hr.hr-half
+
 				= paginate @posts, :views_prefix => 'templates'
-		.col-lg-4
-			= render 'search'
-			= render 'recents'
-			= render 'tags'
-			= render 'twitter_timeline'
+		= render "sidebar"
