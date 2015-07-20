@@ -26,6 +26,43 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
 gem 'social-share-button'
 ```
+y aplicar
+
+```ruby
+bundle install
+```
+
+Ahora se debe importar y ejecutar las migraciones del blog a nuestra aplicación.
+
+```ruby
+rake keppler_blog:install:migrations
+rake db:migrate
+```
+
+Añadir la siguiente ruta a su archivo `routes.rb`
+
+```ruby
+mount KepplerBlog::Engine, :at => '/', as: 'blog'
+```
+
+Debe asignar los permisos de autorización para que pueda tener acceso a los módulos del blog, esto debe hacerlo desde el archivo `model/ability.rb`, aqui una muestra de como deben quedar las autorizaciones.
+
+```ruby
+if user.has_role? :admin
+  can :manage, KepplerBlog::Post
+  can :manage, KepplerBlog::Category
+elsif user.has_role? :autor
+  can :manage, KepplerBlog::Post, :user_id => user.id
+elsif user.has_role? :editor
+  can [:index, :update, :edit, :show]
+end
+```
+
+Por defecto el blog esta desarrollado para trabajar con 3 roles de usuarios.
+
+* **admin**: Tiene acceso completo a los módulos del blog.
+* **autor**: Tiene acceso al módulo *POST* y solo se le permite aplicar acciones a los artículos(posts) de su propiedad.
+* **edtir**: Tiene acceso al módulo *POST* y solo se le permite ver y editar cualquier artículo(post).
 
 Añadir la siguiente linea a su manifesto stylesheets `application.scss`
 
@@ -33,11 +70,7 @@ Añadir la siguiente linea a su manifesto stylesheets `application.scss`
 @import 'dashboard'
 ```
 
-Añadir la siguiente ruta a su archivo `routes.rb`
 
-```ruby
-mount KepplerGaDashboard::Engine, :at => '', as: 'dashboard'
-```
 
 ### Configuración
 
