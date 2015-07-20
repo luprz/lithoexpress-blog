@@ -24,7 +24,7 @@ module KepplerBlog
     end
 
     def self.query(query)
-      { query: { multi_match:  { query: query, fields: [:id, :name] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
+      { query: { multi_match:  { query: query, fields: [:id, :name, :subcategories] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
     end
 
     #armar indexado de elasticserch
@@ -32,6 +32,7 @@ module KepplerBlog
       {
         id: self.id.to_s,
         name:  self.name,
+        subcategories: self.subcategories.map { |subcategory| subcategory.name } .join(", ")
       }.as_json
     end
 
