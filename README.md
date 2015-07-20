@@ -80,6 +80,8 @@ Añadir la siguiente linea a su manifesto stylesheets `frontend/application.scss
 Añadir la siguiente linea a su manifesto javascripts `admin/application.coffee`
 
 ```ruby
+#= require ckeditor/init
+#= require cocoon
 #= require keppler_blog/admin/application
 ```
 
@@ -101,13 +103,13 @@ KepplerBlog.setup do |config|
 end
 ```
 
-Puede conseguir información de como obtener [widget_twitter_id](https://dev.twitter.com/web/embedded-timelines)
-Puede conseguir información de como obtener [facebook_app_id](https://developers.facebook.com/docs/plugins/comments)
+* Puede conseguir información de como obtener [widget_twitter_id](https://dev.twitter.com/web/embedded-timelines)
+* Puede conseguir información de como obtener [facebook_app_id](https://developers.facebook.com/docs/plugins/comments)
 
 ### Vista
 
-Para copiar las vista a tu proyecto y asi personalizarlas para adaptarlas y agregar nuevos reportes, debe ejecutar
+Para copiar las vista a tu proyecto y asi personalizarlas, debe ejecutar
 
 ```ruby
-rake dashboard:copy_views
+rake keppler_blog:copy_views
 ```
