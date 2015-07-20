@@ -19,7 +19,7 @@ Engine que integra un blog a Keppler-Admin.
 Añadir a su Gemfile
 
 ```ruby
-gem 'keppler_blog', git: 'https://github.com/inyxtech/Keppler-Blog.git'
+gem 'keppler_blog', git: 'https://github.com/inyxtech/keppler_blog.git'
 gem 'ckeditor'
 gem 'cocoon'
 gem 'acts-as-taggable-on', '~> 3.4'
