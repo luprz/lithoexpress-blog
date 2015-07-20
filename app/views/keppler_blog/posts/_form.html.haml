@@ -17,8 +17,8 @@
 						= f.input :comments_open, as: :checkbox_material, label: 'Comentarios'
 						= f.input :shared_enabled, as: :checkbox_material, label: 'Compartir en redes'
 					
-					.form-actions.right
-						= f.button :submit, "Guardar", class: "btn"
+						.form-actions.right
+							= f.button :submit, "Guardar", class: "btn"
 
 - unless @post.subcategory_id
 	:javascript
