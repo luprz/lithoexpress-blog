@@ -14,7 +14,7 @@ Engine que integra un blog a Keppler-Admin.
 
 * Keppler-Admin >= 1.0.0
 
-### Instalación
+## Instalación
 
 Añadir a su Gemfile
 
@@ -64,7 +64,6 @@ Por defecto el blog esta desarrollado para trabajar con 3 roles de usuarios.
 * **autor**: Tiene acceso al módulo *POST* y solo se le permite aplicar acciones a los artículos(posts) de su propiedad.
 * **edtir**: Tiene acceso al módulo *POST* y solo se le permite ver y editar cualquier artículo(post).
 
-##### Assets
 
 Añadir la siguiente linea a su manifesto stylesheets `admin/application.scss`
 
@@ -92,7 +91,7 @@ Añadir la siguiente linea a su manifesto javascripts `froentend/application.cof
 #= require keppler_blog/frontend/application
 ```
 
-### Configuración
+## Configuración
 
 ##### Inicializador
 
