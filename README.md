@@ -64,7 +64,7 @@ Por defecto el blog esta desarrollado para trabajar con 3 roles de usuarios.
 
 * **admin**: Tiene acceso completo a los módulos del blog.
 * **autor**: Tiene acceso al módulo *POST* y solo se le permite aplicar acciones a los artículos(posts) de su propiedad.
-* **edtir**: Tiene acceso al módulo *POST* y solo se le permite ver y editar cualquier artículo(post).
+* **editor**: Tiene acceso al módulo *POST* y solo se le permite ver y editar cualquier artículo(post).
 
 
 Añadir la siguiente linea a su manifesto stylesheets `admin/application.scss`
