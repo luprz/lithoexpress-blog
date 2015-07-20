@@ -7,7 +7,7 @@ Engine que integra un blog a Keppler-Admin.
 * [ckeditor](https://github.com/galetahub/ckeditor)
 * [cocoon](https://github.com/nathanvda/cocoon)
 * [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
-* [carrierwave](https://github.com/carrierwaveuploader/carrierwave
+* [carrierwave](https://github.com/carrierwaveuploader/carrierwave)
 * [social-share-button](https://github.com/huacnlee/social-share-button)
 
 ## Requerimientos
