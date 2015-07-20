@@ -1,4 +1,4 @@
-### Keppler Blog 
+## Keppler Blog 
 
 Engine que integra un blog a Keppler-Admin.
 
@@ -12,6 +12,8 @@ Engine que integra un blog a Keppler-Admin.
 
 ## Requerimientos
 
+* Ruby >= 2.0.0
+* Rails >= 4.0.0
 * Keppler-Admin >= 1.0.0
 
 ## Instalación
