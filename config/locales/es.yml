@@ -1,4 +1,7 @@
 es:
+  header:
+    categories: Blog > Posts > Categorías
+    posts: Blog > Posts
   model:
     plural:
       categories: Categorías
