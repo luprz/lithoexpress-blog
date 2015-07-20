@@ -32,7 +32,7 @@ y aplicar
 bundle install
 ```
 
-Ahora se debe importar y ejecutar las migraciones del blog a nuestra aplicación.
+Ahora se debe importar las migraciones del blog a Keppler-Admin y ejecutarlas.
 
 ```ruby
 rake keppler_blog:install:migrations
@@ -64,6 +64,7 @@ Por defecto el blog esta desarrollado para trabajar con 3 roles de usuarios.
 * **autor**: Tiene acceso al módulo *POST* y solo se le permite aplicar acciones a los artículos(posts) de su propiedad.
 * **edtir**: Tiene acceso al módulo *POST* y solo se le permite ver y editar cualquier artículo(post).
 
+##### Assets
 
 Añadir la siguiente linea a su manifesto stylesheets `admin/application.scss`
 
