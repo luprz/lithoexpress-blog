@@ -93,7 +93,7 @@ Añadir la siguiente linea a su manifesto javascripts `froentend/application.cof
 
 ### Configuración
 
-##### Iinicializador
+##### Inicializador
 
 Ejecutar `rake keppler_blog:copy_initializer`
 
