@@ -78,6 +78,9 @@
 
 	.blog-widget{
 		margin-bottom: 50px;
+		@media #{$phone} {
+			margin-bottom: 15px;
+		}
 		&--header{
 			margin-bottom: 10px;
 			.widget-title{
@@ -127,8 +130,6 @@
 					}
 					a.active{
 						background: #ee6e73;
-						padding: 10px;
-						background: #ddd;
 					}
 				}
 			}

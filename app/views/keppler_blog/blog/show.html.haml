@@ -1,7 +1,11 @@
+= title @post.title
+= meta_description sanitize(@post.body, tags: []).truncate(150)
+
 .container.blog#keppler-blog
 	= render 'categories'
+	= render 'search'
 	.row
-		.col-lg-8
+		.col-lg-8.col-xs-12
 			.posts-wrapper
 				.post
 					%h2.post-title
@@ -14,10 +18,10 @@
 									= @post.created_at.strftime("%d %b. %Y")
 							%li
 								%i.fa.fa-user
-								= link_to @post.user.name, "#"
+								= link_to @post.user.name, filter_path('autor', @post.user.permalink)
 							%li
 								%i.fa.fa-tags
-								= link_to @post.category.name, "#"
+								= link_to @post.category.name, filter_path('category', @post.category.permalink)
 					.post-image
 						= link_to blog_show_post_path(@post.permalink) do
 							= image_tag @post.image
@@ -25,6 +29,6 @@
 					.post-body
 						= @post.body.html_safe
 				
-				= render 'comments_facebook'
+				= render 'facebook_comments'
 
 		= render "sidebar"
