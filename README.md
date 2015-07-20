@@ -91,17 +91,18 @@ Añadir la siguiente linea a su manifesto javascripts `froentend/application.cof
 
 ### Configuración
 
-El engine necesita que el usuario cree una api para google analitycs, esto lo puedes conseguir desde (https://console.developers.google.com), debes crear un  proyecto, luego crear un cliente y selecionar la opción **cuenta de servicio**, una vez creado hay que generar una calve p12 y guardar el archivo en el directorio `config/gaAuth` de su app.
+Ejecutar `rake keppler_blog:copy_initializer`
 
-Luego de haber realizado esto debe agregar los datos de configuración en `secrets.yml` bajo la siguiente configuracion:
-
-```yml
-ga_auth:
-  :service_account_email_address: "dirección de correo electronico generada por la api"
-  :file_key_name: "nombre del archio p12 generado por la api"
+```ruby
+KepplerBlog.setup do |config|
+	config.widget_twitter_id = "id" #widget timeline de twitter
+	config.twitter_username = "username de twitter"
+	config.facebook_app_id = "id" #comentarios de facebook para los posts
+end
 ```
 
-**Nota:** *Asegurese de darle permisos a la api desde su cuenta de google analitycs*
+Puede conseguir información de como obtener [widget_twitter_id](https://dev.twitter.com/web/embedded-timelines)
+Puede conseguir información de como obtener [facebook_app_id](https://developers.facebook.com/docs/plugins/comments)
 
 ### Vista
 
