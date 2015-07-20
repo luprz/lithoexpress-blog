@@ -64,13 +64,30 @@ Por defecto el blog esta desarrollado para trabajar con 3 roles de usuarios.
 * **autor**: Tiene acceso al módulo *POST* y solo se le permite aplicar acciones a los artículos(posts) de su propiedad.
 * **edtir**: Tiene acceso al módulo *POST* y solo se le permite ver y editar cualquier artículo(post).
 
-Añadir la siguiente linea a su manifesto stylesheets `application.scss`
+
+Añadir la siguiente linea a su manifesto stylesheets `admin/application.scss`
 
 ```ruby
-@import 'dashboard'
+@import "keppler_blog/admin/blog";
 ```
 
+Añadir la siguiente linea a su manifesto stylesheets `frontend/application.scss`
 
+```ruby
+@import "keppler_blog/frontend/blog";
+```
+
+Añadir la siguiente linea a su manifesto javascripts `admin/application.coffee`
+
+```ruby
+#= require keppler_blog/admin/application
+```
+
+Añadir la siguiente linea a su manifesto javascripts `froentend/application.coffee`
+
+```ruby
+#= require keppler_blog/frontend/application
+```
 
 ### Configuración
 
