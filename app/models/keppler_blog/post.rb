@@ -47,7 +47,7 @@ module KepplerBlog
     end
 
     def self.query(query)
-      { query: { multi_match:  { query: query, fields: [:id, :title, :body, :category, :autor, :subcategory, :public, :comments, :shared, :tags] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
+      { query: { multi_match:  { query: query, fields: [:id, :title, :body, :category, :autor, :subcategory, :public, :comments, :shared, :tags], operator: :and }  }, sort: { id: "desc" }, size: self.count }
     end
 
     #armar indexado de elasticserch
