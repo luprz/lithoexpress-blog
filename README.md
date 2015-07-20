@@ -93,6 +93,8 @@ Añadir la siguiente linea a su manifesto javascripts `froentend/application.cof
 
 ### Configuración
 
+##### Iinicializador
+
 Ejecutar `rake keppler_blog:copy_initializer`
 
 ```ruby
@@ -106,9 +108,9 @@ end
 * Puede conseguir información de como obtener [widget_twitter_id](https://dev.twitter.com/web/embedded-timelines)
 * Puede conseguir información de como obtener [facebook_app_id](https://developers.facebook.com/docs/plugins/comments)
 
-### Vista
+##### Vistas
 
-Para copiar las vista a tu proyecto y asi personalizarlas, debe ejecutar
+Para copiar las vistas a tu proyecto y asi personalizarlas, dejecutar
 
 ```ruby
 rake keppler_blog:copy_views
