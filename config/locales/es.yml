@@ -1,7 +1,7 @@
 es:
   header:
-    categories: Blog > Posts > Categorías
-    posts: Blog > Posts
+    keppler_blog/categories: Blog > Posts > Categorías
+    keppler_blog/posts: Blog > Posts
   model:
     plural:
       categories: Categorías
