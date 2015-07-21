@@ -2,7 +2,7 @@
 	%h5
 		= material_icon.md_24.account_circle.css_class("md-light") 
 		= t("model.singular.#{controller_name.singularize}")
-.listing-show-body.card
+.listing-show-body.card{ resize: true , style: "height: {{windowHeight}}px;" }
 	.list
 		%h5 Módulo de categorías
 		%p Aquí podrá gestionar todos las categorías de los posts del blog, ofrece opciones de crear, editar, eliminar y visualizar, se ofrece la opcion de agregar subcategorías a las categorías creadas para llevar un mejor control y filtrado de sus posts.

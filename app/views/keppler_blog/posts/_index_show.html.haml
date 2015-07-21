@@ -6,7 +6,7 @@
 	%h5
 		= material_icon.md_24.library_books.css_class("md-light") 
 		= t("model.singular.#{controller_name.singularize}")
-.listing-show-body.card#blog-listing--show-body{ style: "height: {{windowHeight}}px;" }
+.listing-show-body.card#blog-listing--show-body{ resize: true , style: "height: {{windowHeight}}px;" }
 	= image_tag @post.image
 	%ul.list
 		%li.list-row
