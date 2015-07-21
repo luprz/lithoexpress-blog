@@ -12,7 +12,7 @@ module KepplerBlog
     #actualizar document de elasticsearch (ojo: no sabemos si es la mejor solucion.)
     #se deberia usar __elasticsearch__.update_document pero aparantemente no funciona.
     after_commit on: [:update] do
-      puts __elasticsearch__.index_document
+      __elasticsearch__.index_document
     end
 
     def self.searching(query)
