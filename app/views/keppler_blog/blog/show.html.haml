@@ -3,7 +3,8 @@
 
 .container.blog#keppler-blog
 	= render 'categories'
-	= render 'search'
+	.visible-xs
+		= render 'search'
 	.row
 		.col-lg-8.col-xs-12
 			.posts-wrapper
