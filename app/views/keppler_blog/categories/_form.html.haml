@@ -10,8 +10,8 @@
 						= f.input :name, label: "Nombre"
 						= f.simple_fields_for :subcategories do |c|
 							= render 'subcategory_fields', :f => c
-						.links
-							= link_to_add_association 'Añadir subcategoría', f, :subcategories, class: "waves-effect waves-dark btn-flat right", style: "margin-bottom:10px;"
-
-						.form-actions.right
+							
+						.links.right
+							= link_to_add_association 'Añadir subcategoría', f, :subcategories, class: "waves-effect waves-dark btn-flat", style: "margin-bottom:10px;"
 							= f.button :submit, "Guardar", class: "btn"
+						
