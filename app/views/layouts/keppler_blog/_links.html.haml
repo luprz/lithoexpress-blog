@@ -1,13 +1,8 @@
 - if can? :index, KepplerBlog::Post
 	%li
-		.collapsable.collapsible-header{ class: "#{'active current' if controller_path.camelize.deconstantize.eql?('KepplerBlog') }" }
-			= material_icon.md_18.library_books
-			Blog
-		.collapsible-body
-			%ul.pageslide-sub-menu
-				- if can? :index, KepplerBlog::Post
-					%li
-						= link_to "Posts", '/admin/blog/posts', class: "#{'current' if controller_path.camelize == 'KepplerBlog::Posts' }"
-				- if can? :index, KepplerBlog::Category
-					%li
-						= link_to "Categorías", '/admin/blog/categories', class: "#{'current' if controller_path.camelize ==  'KepplerBlog::Categories' }"
+		= header_tab "Blog", "library_books", "KepplerBlog"
+		= body_tab do
+			- if can? :index, KepplerBlog::Post
+				= link_tab "Posts", "/admin/blog/posts", "KepplerBlog::Posts"
+			- if can? :index, KepplerBlog::Category
+				= link_tab "Categorías", "/admin/blog/categories", "KepplerBlog::Categories"
