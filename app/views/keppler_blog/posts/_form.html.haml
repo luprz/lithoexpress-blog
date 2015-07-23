@@ -9,7 +9,7 @@
 					.row
 						= f.input :image, :as => :file_material, label: false, wrapper_html: { class: "file-field" }
 						= f.input :title, label: "Título"	
-						= f.input :body, :as => :ckeditor, label: false
+						= f.input :body, :as => :ckeditor, label: false, input_html: { :ckeditor => { :toolbar => 'blog'} }
 						= f.input :category_id, collection: @categories, label: false, include_blank: "Selecione una categoría", input_html: { class: "browser-default" }
 						= f.input :subcategory_id, collection: f.object.created_at? ? f.object.category.subcategories : [], label: false, include_blank: "Selecione una subcategoría", input_html: { class: "browser-default" }
 						= f.input :tag_list, label: false, input_html: { data:{role:'tagsinput'}, value:  f.object.tag_list.reverse.join(", "), placeholder: "Agregar tags" }
