@@ -5,9 +5,9 @@
 			%input{ type:"checkbox", class: "filled-in", id: "checkbox-#{post.id}", 'checklist-model'=>"check", 'checklist-value'=>"#{post.id}", "ng-click"=>"selectByCheck(#{@objects.size})"}
 			%label{ for: "checkbox-#{post.id}" }
 	%td{style:"width: 60%"}
-		= link_to "", post_path(post, search: @query), remote: true, class: "show-row"
+		= link_to "", post_path(post, search: @query), remote: true, class: "show-row tooltipped", "data-position" => "bottom", "data-tooltip" => "#{post.title}"
 		%span
-			= post.title
+			= post.title.truncate(70)
 	%td.hide-on-small-and-down{style:"width: 10%"}
 		= link_to "", post_path(post, search: @query), remote: true, class: "show-row"
 		%span

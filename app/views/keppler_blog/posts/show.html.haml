@@ -23,7 +23,7 @@
 						.display-value.fs-body-1.tc-black-2= @post.permalink.to_s.humanize
 					%li.list-row
 						.display-label= t("model.#{controller_name.singularize}.attributes.body")
-						.display-value.fs-body-1.tc-black-2=  sanitize(@post.body, tags: [])
+						.display-value.fs-body-1.tc-black-2=  @post.body.html_safe
 					%li.list-row
 						.display-label= t("model.#{controller_name.singularize}.attributes.user_id")
 						.display-value.fs-body-1.tc-black-2= @post.user.name

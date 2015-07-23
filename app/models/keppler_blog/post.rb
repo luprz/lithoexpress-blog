@@ -12,7 +12,7 @@ module KepplerBlog
     acts_as_taggable
     acts_as_taggable_on :tags
     
-    validates_presence_of :title, :body, :category
+    validates_presence_of :title, :body, :category_id
     validates_uniqueness_of :title
 
     #actualizar document de elasticsearch (ojo: no sabemos si es la mejor solucion.)
