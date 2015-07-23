@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.version     = KepplerBlog::VERSION
   s.authors     = ["Gabriel"]
   s.email       = ["gbrlmrllo@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of KepplerBlog."
+  s.homepage    = "https://github.com/inyxtech/keppler_blog"
+  s.summary     = "Summary of KepplerBlog."
   s.description = "Engine que integra un blog a Keppler-Admin"
   s.license     = "MIT"
 
