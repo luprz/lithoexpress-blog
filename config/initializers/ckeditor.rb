@@ -9,7 +9,7 @@ Ckeditor.setup do |config|
   # Allowed image file types for upload.
   # Set to nil or [] (empty array) for all file types
   # By default: %w(jpg jpeg png gif tiff)
-  # config.image_file_types = ["jpg", "jpeg", "png", "gif", "tiff"]
+  config.image_file_types = ["jpg", "jpeg", "png", "gif"]
 
   # Allowed attachment file types for upload.
   # Set to nil or [] (empty array) for all file types
@@ -37,8 +37,6 @@ Ckeditor.setup do |config|
   # config.assets_languages = ['en', 'uk']
   # config.assets_plugins = ['image', 'smiley']
 
-  Ckeditor.setup do |config|
-    config.assets_languages = ['es']
-    config.assets_plugins = ['image', 'smiley']
-  end
+  config.assets_languages = ['es']
+  config.assets_plugins = ['image', 'smiley']
 end
