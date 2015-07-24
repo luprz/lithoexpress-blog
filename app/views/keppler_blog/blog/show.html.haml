@@ -26,7 +26,7 @@
 					.post-image
 						= link_to blog_show_post_path(@post.permalink) do
 							= image_tag @post.image
-					= social_share_button_tag(@post.title)
+					= @post.shared_enabled ? social_share_button_tag(@post.title) : "<br>".html_safe
 					.post-body
 						= @post.body.html_safe
 				

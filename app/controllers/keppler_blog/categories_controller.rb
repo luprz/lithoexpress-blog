@@ -33,7 +33,7 @@ module KepplerBlog
       @category = Category.new(category_params)
 
       if @category.save
-        redirect_to @category, notice: 'Category was successfully created.'
+        redirect_to @category, notice: 'Categoría creada satisfactoriamente'
       else
         render :new
       end
@@ -42,7 +42,7 @@ module KepplerBlog
     # PATCH/PUT /categories/1
     def update
       if @category.update(category_params)
-        redirect_to @category, notice: 'Category was successfully updated.'
+        redirect_to @category, notice: 'Categoría actualizada satsfactoriamente'
       else
         render :edit
       end
@@ -51,12 +51,12 @@ module KepplerBlog
     # DELETE /categories/1
     def destroy
       @category.destroy
-      redirect_to categories_url, notice: 'Category was successfully destroyed.'
+      redirect_to categories_url, notice: 'Categoría eliminada satisfactoriamente'
     end
 
     def destroy_multiple
       Category.destroy redefine_ids(params[:multiple_ids])
-      redirect_to categories_path(page: @current_page, search: @query), notice: "Usuarios eliminados satisfactoriamente" 
+      redirect_to categories_path(page: @current_page, search: @query), notice: "Categorías eliminadas satisfactoriamente" 
     end
 
     private
