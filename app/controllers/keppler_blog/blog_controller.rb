@@ -7,7 +7,7 @@ module KepplerBlog
     before_action :set_data_widgets, only: [:index, :show, :filter, :filter_subcategory]
 
     def index
-      @posts = Post.searching(params[:query]).where(public: true).page(@current_page).per(10)
+      @posts = Post.searching(params[:query]).where(public: true).page(@current_page).per(KepplerBlog.posts_per_page)
     end
 
     def show   
