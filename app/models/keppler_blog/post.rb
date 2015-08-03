@@ -20,7 +20,11 @@ module KepplerBlog
     after_commit on: [:update] do
       puts __elasticsearch__.index_document
     end
-
+    
+    def self.published
+      where(public: true).order(created_at: :desc)
+    end
+    
     def self.filter_by_autor(autor)
       where(public: true, user: User.find_by_permalink(autor).id).order(created_at: :desc)
     end
