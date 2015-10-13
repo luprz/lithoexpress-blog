@@ -1,8 +1,8 @@
 - if can? :index, KepplerBlog::Post
 	%li
-		= header_tab "Blog", "library_books", "KepplerBlog"
+		= header_tab "Blog", "library_books", current_navigation?("KepplerBlog")
 		= body_tab do
 			- if can? :index, KepplerBlog::Post
-				= link_tab "Posts", "/admin/blog/posts", "KepplerBlog::Posts"
+				= link_tab "Posts", "/admin/blog/posts", current_navigation?("KepplerBlog::Posts")
 			- if can? :index, KepplerBlog::Category
-				= link_tab "Categorías", "/admin/blog/categories", "KepplerBlog::Categories"
+				= link_tab "Categorías", "/admin/blog/categories", current_navigation?("KepplerBlog::Categories")
