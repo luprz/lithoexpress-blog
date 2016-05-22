@@ -5,20 +5,22 @@
 				= material_icon.md_18.arrow_back.css_class("md-dark")
 		.wrapper-inputs
 			.card
-				= simple_form_for @post do |f|
-					.row
-						= f.input :image, :as => :file_material, label: false, wrapper_html: { class: "file-field" }
-						= f.input :title, label: "Título"	
-						= f.input :body, :as => :ckeditor, label: false, input_html: { :ckeditor => { :toolbar => 'mini'} }
-						= f.input :category_id, collection: @categories, label: false, include_blank: "Selecione una categoría", input_html: { class: "browser-default" }
-						= f.input :subcategory_id, collection: f.object.created_at? ? f.object.category.subcategories : [], label: false, include_blank: "Selecione una subcategoría", input_html: { class: "browser-default" }
-						= f.input :tag_list, label: false, input_html: { data:{role:'tagsinput'}, value:  f.object.tag_list.reverse.join(", "), placeholder: "Agregar tags" }
-						= f.input :public, as: :checkbox_material, label: 'Publicar'
-						= f.input :comments_open, as: :checkbox_material, label: 'Comentarios'
-						= f.input :shared_enabled, as: :checkbox_material, label: 'Compartir en redes'
-					
-						.form-actions.right
-							= f.button :submit, "Guardar", class: "btn"
+				.card-content
+					= simple_form_for @post do |f|
+						.row
+							= f.input :image, :as => :file_material, label: false, wrapper_html: { class: "file-field" }
+							= f.input :title
+							= f.input :body, :as => :ckeditor, label: false, input_html: { :ckeditor => { :toolbar => 'mini'} }
+							= f.input :category_id, collection: @categories, label: false, include_blank: t('activerecord.attributes.keppler_blog/post.category'), input_html: { class: "browser-default" }
+							= f.input :subcategory_id, collection: f.object.created_at? ? f.object.category.subcategories : [], label: false, include_blank: t('activerecord.attributes.keppler_blog/post.subcategory'), input_html: { class: "browser-default" }
+							= f.input :tag_list, label: false, input_html: { data:{role:'tagsinput'}, value:  f.object.tag_list.reverse.join(", "), placeholder: t('activerecord.attributes.keppler_blog/post.tags') }
+							= f.input :public, as: :checkbox_material
+							= f.input :comments_open, as: :checkbox_material
+							= f.input :shared_enabled, as: :checkbox_material
+
+							.form-actions.right
+								= f.button :submit, t("keppler.actions.save"), name: "_save"
+								= f.button :submit, t("keppler.actions.save_and_add_another"), name: "_add_other"
 
 - unless @post.subcategory_id
 	:javascript

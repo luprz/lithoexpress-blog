@@ -1,9 +1,9 @@
-es:
+en:
   keppler:
     models:
       singularize:
         keppler_blog/post: 'Post'
-        keppler_blog/category: 'Categoria'
+        keppler blog/category: 'Categoría'
       pluralize:
         posts: Posts
         categories: Categorías
@@ -21,26 +21,11 @@ es:
   activerecord:
     attributes:
       keppler_blog/post:
-        published: Publicado
-        no_published: No Publicado
         tags: Añadir tags
         category: Seleccionar categoría
         subcategory: Seleccionar Subcategoría
-        public: 'Publicar'
-        body: Contenido
-        user_id: Creado por
-        category_id: Categoría
-        subcategory_id: Subcategoría
-        image: Imagen
-        title: Título
-        comments_open: Comentarios
-        shared_enabled: Permitir compatir
-        created_at: Fecha de creación
-        updated_at: Fecha de actualización
       keppler_blog/category:
-        name: Nombre
-        subcategories: Subcategorías
-        permalin: Permalink
         add_subcategory: Agregar Subcategoría
       keppler_blog/subcategory:
         name: Subcategoría
+

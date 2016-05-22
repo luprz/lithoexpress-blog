@@ -19,7 +19,7 @@
 	%td.hide-on-small-and-down{style:"width: 10%"}
 		= link_to "", post_path(post, search: @query), remote: true, class: "show-row"
 		%span
-			= post.public ? "Publicado" : "No publicado"						
-	%td{style:"width: 5%"}		
+			= post.public ? t('activerecord.attributes.keppler_blog/post.published') : t('activerecord.attributes.keppler_blog/post.no_published')
+	%td{style:"width: 5%"}
 		= link_to post_path(post), class: "btn-floating waves-effect btn-flat" do
 			= material_icon.md_24.more_horiz.css_class("md-dark")

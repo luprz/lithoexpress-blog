@@ -1,4 +1,4 @@
 module KepplerBlog
-  class ApplicationController < ::ApplicationController
+  class ApplicationController < Admin::AdminController
   end
 end

@@ -1,27 +1,11 @@
-#Generado por keppler
-require 'elasticsearch/model'
 module KepplerBlog
   class Category < ActiveRecord::Base
-    include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
+    include ElasticSearchable
+    include ActivityHistory
     before_save :create_permalink
     has_many :posts, dependent: :destroy
     has_many :subcategories
     accepts_nested_attributes_for :subcategories, :reject_if => :all_blank, :allow_destroy => true
-
-    #actualizar document de elasticsearch (ojo: no sabemos si es la mejor solucion.)
-    #se deberia usar __elasticsearch__.update_document pero aparantemente no funciona.
-    after_commit on: [:update] do
-      __elasticsearch__.index_document
-    end
-
-    def self.searching(query)
-      if query
-        self.search(self.query query).records.order(id: :desc)
-      else
-        self.order(id: :desc)
-      end
-    end
 
     def self.query(query)
       { query: { multi_match:  { query: query, fields: [:id, :name, :subcategories] , operator: :and }  }, sort: { id: "desc" }, size: self.count }
@@ -43,5 +27,4 @@ module KepplerBlog
     end
 
   end
-  #Category.import
 end

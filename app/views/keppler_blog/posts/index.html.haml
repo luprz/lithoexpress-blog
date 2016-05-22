@@ -1,4 +1,5 @@
-= title("Posts - Listado")
+= title(t('keppler.titles.index', model: t("keppler.models.pluralize.posts")))
+
 .listing.col.l9.m12.s12
 	- if can? :new, model
 		= link_to new_post_path, class: "btn-floating btn-large waves-effect waves-light teal btn-new hide-on-small-only", "data-no-turbolink" => true do
@@ -12,12 +13,12 @@
 				%tr
 					%td{colspan: "4"}
 						%center
-							No se han encontrado posts.
+							= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.posts"))
 	= paginate @objects, window: 1
 
 .listing-show.col.l3.m12.hide-on-small-and-down.hide-on-med-and-down
 	= render "description"
 
-
-= link_to new_post_path, class: "btn-index-add btn-floating btn-large teal waves-effect waves-light red" do
-	= material_icon.md_24.add.css_class("md-light")
+- if can? :new, model
+	= link_to new_post_path, class: "btn-index-add btn-floating btn-large teal waves-effect waves-light red" do
+		= material_icon.md_24.add.css_class("md-light")

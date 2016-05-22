@@ -2,16 +2,16 @@
 require_dependency "keppler_blog/application_controller"
 
 module KepplerBlog
-  class BlogController < ApplicationController  
-    layout 'frontend/application'
+  class BlogController < App::AppController
+    layout 'app/layouts/application'
     before_action :set_data_widgets, only: [:index, :show, :filter, :filter_subcategory]
 
     def index
       @posts = Post.searching(params[:query]).where(public: true).page(@current_page).per(KepplerBlog.posts_per_page)
     end
 
-    def show   
-      @post =  Post.find_by_permalink(params[:permalink])   
+    def show
+      @post =  Post.find_by_permalink(params[:permalink])
     end
 
     def filter
